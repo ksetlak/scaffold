@@ -36,18 +36,7 @@ Scaffold is built to be universal and harness-agnostic, but telling it a little 
 
 Getting this right lets you make much better use of the tooling you already have. Check it once, and revisit it if you change tools.
 
-## 4. Update `.gitignore`
-
-Add this entry for things that should never be committed in a project built on Scaffold:
-
-```
-# Ephemeral agent run artifacts
-backlog/_runs/
-```
-
-If your tool needs local shim files (see step 5), either commit them or ignore them here, depending on your team's preference.
-
-## 5. Connect your AI tool
+## 4. Connect your AI tool
 
 Scaffold is tool-neutral. `AGENTS.md` holds the agent instructions, and `.agents/` holds the role, skill, and mode definitions. Neither is tied to a specific tool, model, or harness. Most tools find them directly. If yours doesn't, add a thin shim that points at the canonical files. Don't copy their content into tool-specific folders.
 
@@ -61,7 +50,9 @@ Scaffold is tool-neutral. `AGENTS.md` holds the agent instructions, and `.agents
 
 Role definitions carry no model setting. Choose the model in your tool.
 
-## 6. Adapt AGENTS.md to your project
+If your tool needs local shim files, either commit them or add them to `.gitignore`, depending on your team's preference.
+
+## 5. Adapt AGENTS.md to your project
 
 Think of `AGENTS.md` as Scaffold's firmware. It's the layer that makes the template work, and it changes rarely. It can be edited at any time, but in practice you'll set it up once for your project and then leave it alone.
 
@@ -72,11 +63,11 @@ Open it and make it yours:
 
 Keep the project-specific rules in this file, and keep Scaffold's settings in `scaffold.yaml`. If you later pull newer Scaffold files into your project, this separation keeps the merge small.
 
-## 7. Write your first ADR (optional but recommended)
+## 6. Write your first ADR (optional but recommended)
 
 If you have already made a significant architecture decision (language, framework, database), record it now before you forget the reasoning. Use the template at `docs/adrs/_template.md`.
 
-## 8. Write your first backlog items
+## 7. Write your first backlog items
 
 Copy `backlog/_template.md` to `backlog/items/{PROJECT_KEY}-001.md`, using the key from `scaffold.yaml`, for each item. See `backlog/README.md` for the full schema. Set `status: READY` on items you want agents to pick up.
 
