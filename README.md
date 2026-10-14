@@ -13,7 +13,8 @@ An opinionated, tool-agnostic project template for AI-assisted software developm
 | `docs/adrs/` | ADR template and index — record every significant architecture decision |
 | `docs/prds/` | PRD template and index — capture product requirements before implementation |
 | `docs/meeting-notes/` | Running log of decisions made with the operator |
-| `AGENTS.md` | Canonical, tool-neutral AI agent instructions |
+| `AGENTS.md` | Canonical, tool-neutral AI agent instructions. Adapt it once to your project |
+| `scaffold.yaml` | Scaffold settings: ticket ID prefix and whether your tool supports subagents |
 | `SETUP.md` | Checklist for configuring a fresh clone for your specific project and tools |
 
 ## Where to look
@@ -22,6 +23,7 @@ An opinionated, tool-agnostic project template for AI-assisted software developm
 - **Backlog rules and ticket schema**: `backlog/README.md`
 - **ADR template**: `docs/adrs/_template.md`
 - **PRD template**: `docs/prds/_template.md`
+- **Settings**: `scaffold.yaml`
 - **AI tool setup**: `SETUP.md`
 
 ## Repository layout
@@ -31,6 +33,7 @@ scaffold/
 ├── .agents/
 │   ├── README.md        # Conventions and role index
 │   ├── agents/          # Role definitions: orchestrator, builder, reviewer, …
+│   ├── modes/           # Delegated (subagents) and manual (relay) execution modes
 │   └── skills/pickup/   # pickup skill for backlog-driven delivery
 ├── backlog/
 │   ├── items/           # one .md file per open item
@@ -42,6 +45,7 @@ scaffold/
 │   ├── prds/            # Product Requirements Documents
 │   └── meeting-notes/   # Session logs
 ├── AGENTS.md            # Canonical AI agent instructions
+├── scaffold.yaml        # Scaffold settings (project key, subagent support)
 ├── README.md            # This file
 └── SETUP.md             # Per-project and per-tool setup checklist
 ```

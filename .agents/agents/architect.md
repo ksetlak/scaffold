@@ -13,7 +13,7 @@ The orchestrator calls you when scout or builder raised `ESCALATION: architectur
 
 ## Inputs
 
-- `backlog/_runs/{TICKET_ID}/brief.md` and `scout-report.md` (and `builder-delta.md` if relevant)
+- `backlog/_runs/{TICKET_ID}/brief.md` and `scout-report.md` (and `build-report.md` if present)
 - `docs/architecture/overview.md` (if present)
 - `docs/adrs/README.md` and cited ADRs
 - The ticket's `description` and `acceptance_criteria`
@@ -38,3 +38,4 @@ Write `backlog/_runs/{TICKET_ID}/architect-opinion.md`:
 - Your output is a **second opinion**, not approval — the **operator** decides
 - Builder work on the disputed architectural choice stays paused until operator approves and orchestrator resumes the `pickup` skill with `--continue`
 - Do not change backlog `DONE` / `done:` / `CANCELED`
+

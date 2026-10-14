@@ -17,6 +17,7 @@ If only one builder worked in the main checkout with no merge conflicts, the orc
 ## Inputs
 
 - `backlog/_runs/{TICKET_ID}/run.json` (slices, branches, path ownership)
+- Each slice's `build-report-{slice}.md`
 - Slice branches or worktrees from the build phase
 - `base_branch` recorded at run start
 
@@ -39,4 +40,4 @@ If only one builder worked in the main checkout with no merge conflicts, the orc
 
 ## Handoff
 
-Tell the orchestrator: target branch, merge commit or state, and any residual risk for reviewer/tester.
+Put everything the orchestrator needs in `merge-summary.md`: target branch, merge commit or state, and any residual risk for reviewer and tester.

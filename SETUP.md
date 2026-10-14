@@ -16,9 +16,25 @@ git commit -m "chore: init from Scaffold"
 - Rename the folder to your project name.
 - Find and replace any remaining `scaffold` references in `README.md` and `AGENTS.md`.
 
-## 3. Set the backlog project key
+## 3. Configure Scaffold
 
-Open `backlog/_template.md` and `backlog/README.md` and replace `APP` with your project key abbreviation (e.g. `RC` for Rovicky-Cedar). Ticket IDs will follow the pattern `RC-001`, `RC-002`, etc.
+Open `scaffold.yaml` at the repository root. It's the one place for Scaffold's own settings, and it's meant to be edited.
+
+**`project_key`** is the prefix for ticket IDs (for example `RC` gives `RC-001`, `RC-002`). Set it in `scaffold.yaml`, which is the source of truth. As a best practice, also update the `id` in `backlog/_template.md` to use the same key (for example `RC-000`). Agents read the key from `scaffold.yaml`, but the template is what people copy when they create a ticket by hand, so keeping the two in sync avoids tickets with the wrong prefix.
+
+**`subagents`** declares whether your AI tool can run a subagent: an agent with its own fresh context window. Subagents aren't weighed down by other agents' reasoning, and aren't influenced by their approach. That isolation is what makes the reviewer and tester independent, so Scaffold treats subagents as the default way of working.
+
+| Value | Use it when | What happens |
+|-------|-------------|--------------|
+| `true` (default) | Your tool can spawn agents with a clean context, such as a built-in subagent feature or agent profiles | The orchestrator runs the whole pipeline and delegates each role to its own subagent, in parallel where that helps |
+| `false` | Your tool has no such feature, or you can't confirm it isolates context | The orchestrator does its own step, then stops and gives you a ready-to-paste prompt to start the next role in a new session. Roles never share a session |
+
+Scaffold is built to be universal and harness-agnostic, but telling it a little about your stack pays off. It reads this file instead of probing your environment at the start of every run, which keeps sessions cheap. It can still find its way if the value is wrong:
+
+- If it's `true` but no isolated subagent can be spawned, the orchestrator falls back to the manual relay, tells you why, and suggests changing the setting.
+- If it's `false` but the tool clearly offers subagents, the orchestrator keeps following the setting and suggests that you change it.
+
+Getting this right lets you make much better use of the tooling you already have. Check it once, and revisit it if you change tools.
 
 ## 4. Update `.gitignore`
 
@@ -33,7 +49,7 @@ If your tool needs local shim files (see step 5), either commit them or ignore t
 
 ## 5. Connect your AI tool
 
-Scaffold is tool-neutral. `AGENTS.md` holds the project rules, and `.agents/` holds the role and skill definitions. Neither is tied to a specific tool, model, or harness. Most tools find them directly. If yours doesn't, add a thin shim that points at the canonical files. Don't copy their content into tool-specific folders.
+Scaffold is tool-neutral. `AGENTS.md` holds the agent instructions, and `.agents/` holds the role, skill, and mode definitions. Neither is tied to a specific tool, model, or harness. Most tools find them directly. If yours doesn't, add a thin shim that points at the canonical files. Don't copy their content into tool-specific folders.
 
 | Situation | What to do |
 |-----------|-----------|
@@ -41,19 +57,20 @@ Scaffold is tool-neutral. `AGENTS.md` holds the project rules, and `.agents/` ho
 | Tool expects its own instructions file | Create a one-line file that imports or links to `AGENTS.md`, or symlink it. Check your tool's docs for the file name and import syntax |
 | Tool expects skills or agents in its own folder | Symlink that folder to `.agents/skills/` or `.agents/agents/`. Don't move the originals |
 | Custom or embedded harness | Load `AGENTS.md` as project context, and expose `.agents/skills/` and `.agents/agents/` as skills and roles |
-| Tool has no skill or subagent support | Ask the agent to read `.agents/skills/pickup/SKILL.md` and follow it. The orchestrator runs the roles sequentially |
+| Tool has no skill support | Ask the agent to read `.agents/skills/pickup/SKILL.md` and follow it |
 
 Role definitions carry no model setting. Choose the model in your tool.
 
-## 6. Add project-specific rules to AGENTS.md
+## 6. Adapt AGENTS.md to your project
 
-Open `AGENTS.md` and replace the placeholder `_No project-specific rules yet_` section with the rules that apply to your project. Typical entries:
+Think of `AGENTS.md` as Scaffold's firmware. It's the layer that makes the template work, and it changes rarely. It can be edited at any time, but in practice you'll set it up once for your project and then leave it alone.
 
-- Naming conventions
-- Forbidden libraries or patterns  
-- Required file locations
-- Testing requirements
-- Language and framework constraints
+Open it and make it yours:
+
+- Replace the placeholder under **Key project rules** with the rules that apply to your project: naming conventions, forbidden libraries or patterns, required file locations, testing requirements, and language and framework constraints.
+- Adjust the working style and any other section that doesn't fit how your team works.
+
+Keep the project-specific rules in this file, and keep Scaffold's settings in `scaffold.yaml`. If you later pull newer Scaffold files into your project, this separation keeps the merge small.
 
 ## 7. Write your first ADR (optional but recommended)
 
@@ -61,7 +78,7 @@ If you have already made a significant architecture decision (language, framewor
 
 ## 8. Write your first backlog items
 
-Copy `backlog/_template.md` to `backlog/items/APP-001.md` (replacing `APP` with your project key) for each item. See `backlog/README.md` for the full schema. Set `status: READY` on items you want agents to pick up.
+Copy `backlog/_template.md` to `backlog/items/{PROJECT_KEY}-001.md`, using the key from `scaffold.yaml`, for each item. See `backlog/README.md` for the full schema. Set `status: READY` on items you want agents to pick up.
 
 ## You're ready
 

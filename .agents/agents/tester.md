@@ -38,4 +38,8 @@ Write `backlog/_runs/{TICKET_ID}/test-report.md`:
 - Do **not** set `DONE`, `CANCELED`, or move items to `done:`
 - Do **not** edit `backlog/items/` except as orchestrator explicitly directs for status (normally orchestrator sets `AWAITING_OPERATOR`)
 
+## Independence
+
+Read only the inputs listed above, and nothing else in `backlog/_runs/{TICKET_ID}/`. Judge the behaviour against the acceptance criteria, not against the builder's or reviewer's account of it.
+
 See `backlog/README.md` for status rules.

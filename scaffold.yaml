@@ -1,0 +1,17 @@
+# Scaffold configuration.
+#
+# Settings for Scaffold itself. Set them once during setup (see SETUP.md).
+# A missing file or key falls back to the default shown here.
+
+# Prefix for ticket IDs: APP-001, APP-002, ...
+# Use a short, uppercase abbreviation of your project name.
+project_key: APP
+
+# Can your AI tool run a subagent: an agent with its own fresh context window?
+#   true  - the orchestrator runs the whole pipeline and delegates each role to
+#           a subagent, using parallel subagents where that helps (default).
+#   false - the orchestrator does its own step, then stops and hands you a
+#           ready-to-paste prompt for the next role. You start each role in a
+#           new session.
+# If this is wrong, Scaffold still finds its way, but it works best when it's right.
+subagents: true

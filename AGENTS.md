@@ -10,7 +10,8 @@ This is the canonical agent instruction file for this repository. All AI tools s
 - `backlog/items/` — one file per open backlog item; `backlog/archive/` for ones closed and archived
 - `docs/adrs/` — Architecture Decision Records (index: `docs/adrs/README.md`)
 - `docs/prds/` — Product Requirements Documents (index: `docs/prds/README.md`)
-- `.agents/` — role-specific agent definitions and skills (index: `.agents/README.md`)
+- `.agents/` — role-specific agent definitions, skills, and execution modes (index: `.agents/README.md`)
+- `scaffold.yaml` — Scaffold settings (project key, subagent support)
 
 When exploring a documentation subfolder, read its `README.md` as an index before opening individual files.
 
@@ -25,13 +26,17 @@ When exploring a documentation subfolder, read its `README.md` as an index befor
 
 Use the `pickup` skill (`.agents/skills/pickup/`) to work on backlog items. See `backlog/README.md` for the full workflow, ticket schema, and status rules.
 
+## Configuration
+
+Scaffold's own settings (ticket ID prefix, whether subagents are available) live in `scaffold.yaml`. Read it when a task depends on them. It is not project documentation.
+
 ## Dependency checks
 
 Before adding any new dependency, verify it is appropriate for this project's constraints and document the decision if it represents an architectural shift.
 
 ## Key project rules
 
-<!-- 
+<!--
   Replace this section with project-specific rules after cloning.
   Examples of what belongs here:
   - Naming conventions

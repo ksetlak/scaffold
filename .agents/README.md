@@ -7,6 +7,7 @@ Tool-neutral definitions for the roles and workflows used in this repository. No
 ```
 .agents/
 ├── agents/   # one Markdown file per role (orchestrator, scout, builder, reviewer, tester, …)
+├── modes/    # how roles are run: delegated.md (subagents) and manual.md (relay)
 └── skills/   # one folder per skill, each with a SKILL.md (e.g. pickup)
 ```
 
@@ -16,7 +17,8 @@ Tool-neutral definitions for the roles and workflows used in this repository. No
 - **No model pinning.** Definitions never name a model, provider, or reasoning level. The operator chooses these in their tool.
 - **No tool-specific syntax.** No slash commands, tool names, MCP server names, or paths such as `.cursor/` or `.claude/`. Refer to skills and roles by name.
 - **Project rules live in `AGENTS.md`.** Role definitions point there instead of at tool-specific rule files.
-- **Artifacts are the contract.** Roles communicate through files in `backlog/_runs/{TICKET_ID}/`, so the pipeline works whether roles run as separate subagents or sequentially in one session.
+- **Roles are isolated.** Each role runs in its own fresh session, so reviewer and tester stay independent of the builder. The orchestrator is the hub that routes between them. Role files describe the work; the mode files describe how roles are started and handed off.
+- **Stack is declared, not probed.** Whether subagents are available is set in `scaffold.yaml`, and the orchestrator loads one mode file to match.
 
 ## Roles
 
@@ -39,4 +41,4 @@ Tool-neutral definitions for the roles and workflows used in this repository. No
 |-------|---------|
 | `pickup` | Select and deliver a backlog ticket until `AWAITING_OPERATOR` |
 
-See `SETUP.md` for making your tool discover these files.
+Only the mode that matches `scaffold.yaml` is loaded in a session. See `SETUP.md` for making your tool discover these files.

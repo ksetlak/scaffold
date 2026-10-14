@@ -11,7 +11,7 @@ backlog/
 └── README.md    # this file
 ```
 
-Ticket IDs use `{PROJECT_KEY}-{NNN}` (e.g. `APP-001` when `PROJECT_KEY` is `APP`). IDs MUST NOT be reused, even if an item is cancelled. Filenames match the ticket ID (e.g. `APP-001.md`).
+Ticket IDs use `{PROJECT_KEY}-{NNN}` (e.g. `APP-001` when `project_key` in `scaffold.yaml` is `APP`). IDs MUST NOT be reused, even if an item is cancelled. Filenames match the ticket ID (e.g. `APP-001.md`).
 
 ## Statuses
 
