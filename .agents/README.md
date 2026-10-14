@@ -34,6 +34,9 @@ Tool-neutral definitions for the roles and workflows used in this repository. No
 | `technical-writer` | Updates documentation |
 | `adr-expert` | Drafts and maintains ADRs |
 | `prd-expert` | Drafts and maintains PRDs |
+| `refactorer` | Specialist. Improves code structure without changing behavior |
+
+Specialists have one job each and run on their own, outside the default pipeline. Start one in a fresh session with a prompt such as: "Act as the `debugger` role defined in `.agents/agents/debugger.md`. Target: `{ticket ID, path, or 'free roam'}`."
 
 ## Skills
 
