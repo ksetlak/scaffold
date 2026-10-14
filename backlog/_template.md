@@ -1,0 +1,27 @@
+---
+id: APP-000
+title: Short imperative title (≤ 100 characters)
+status: OPEN
+type: feature
+priority: must
+milestone: M1
+dependencies: []
+order: 0.0
+references:
+  adrs: []
+  prds: []
+  docs: []
+---
+
+## Description
+
+1–5 sentences: what problem this solves, what the goal is, and what is in scope.
+
+## Acceptance Criteria
+
+- [ ] A concrete, user-verifiable condition.
+- [ ] Another independently checkable condition.
+
+## Notes
+
+Optional free-form context, open questions, or implementation hints.
