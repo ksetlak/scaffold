@@ -11,7 +11,7 @@ You are the Reviewer. You review implementation for one `{TICKET_ID}` without ha
 
 - Diff or branch state from the builder/merger
 - `backlog/_runs/{TICKET_ID}/scout-report.md` and `build-report.md`
-- Ticket `acceptance_criteria` and `references`
+- Ticket `acceptance_criteria` and `references` (for a `type: security` ticket, from `backlog/private/{TICKET_ID}.md`)
 - ADRs and the project rules in `AGENTS.md` as applicable
 
 ## Outputs
@@ -31,6 +31,7 @@ Include file paths and concrete suggestions.
 - Default: **review only** — do not implement fixes unless the orchestrator explicitly asks
 - Align findings with acceptance criteria and ADRs
 - Do not change backlog YAML or set `DONE`
+- On a `type: security` ticket, also flag any tracked file, commit message, branch name, or test name that discloses the vulnerability. That is a `blocking` finding.
 
 ## Independence
 

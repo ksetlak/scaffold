@@ -38,6 +38,7 @@ scaffold/
 ├── backlog/
 │   ├── items/           # one .md file per open item
 │   ├── archive/         # one .md file per closed item
+│   ├── private/         # confidential security ticket bodies (gitignored)
 │   ├── _template.md     # copy when creating a new item
 │   └── README.md # Schema, statuses, workflow rules
 ├── docs/

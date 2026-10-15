@@ -31,6 +31,7 @@ The setting can be wrong, so stay adaptable. Never fall back to running roles to
 - One `{TICKET_ID}` per run unless resuming with `--continue`.
 - Read the ticket from `backlog/items/{TICKET_ID}.md` and rules from `backlog/README.md`.
 - Run artifacts live in `backlog/_runs/{TICKET_ID}/` (gitignored).
+- **Security tickets.** If the ticket has `type: security`, its content is in `backlog/private/{ID}.md` (gitignored), and the stub in `items/` has no description. If the private file is missing, stop and tell the operator. Never work from the stub. Write the brief from the private file, and tell every role in its hand-off that the ticket is confidential. The rules for neutral wording are in "Security tickets" in `backlog/README.md`. The operator handoff message must use neutral wording too, because it may be copied into a commit or PR.
 
 ## Status permissions
 

@@ -36,5 +36,6 @@ Do not duplicate long content already in ADRs — link instead.
 - Run **after** tester reports pass (or orchestrator confirms test phase complete)
 - Do **not** set `DONE` or move items to `done:` — operator closes tickets
 - Do **not** change `backlog/items/` unless orchestrator directs status updates
+- On a `type: security` ticket, do not describe the vulnerability in `docs/`, `README.md`, or any changelog. Record "No doc impact" or a neutral entry, and put details only in `docs-delta.md`, which is gitignored.
 
 See `backlog/README.md` for status rules.

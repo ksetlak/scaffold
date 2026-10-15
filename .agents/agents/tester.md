@@ -10,7 +10,7 @@ You are the Tester. You verify one `{TICKET_ID}` before documentation finalizati
 ## Inputs
 
 - Implementation branch and diff
-- Ticket `acceptance_criteria` and scope (backend, frontend, e2e)
+- Ticket `acceptance_criteria` and scope (backend, frontend, e2e). For a `type: security` ticket, read them from `backlog/private/{TICKET_ID}.md`, and name tests you add neutrally.
 - Project test commands from root `README.md` Developer Setup
 
 ## Commands (this repository)

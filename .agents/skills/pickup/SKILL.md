@@ -34,9 +34,18 @@ How the skill is triggered depends on your tool: a slash command, a skill picker
 1. Read all files in `backlog/items/`.
 2. Exclude anything that is not `status: READY`.
 3. Exclude items whose `dependencies` are not yet `AWAITING_OPERATOR` or `DONE`.
-4. Sort remaining items by `priority`: `must` → `should` → `could`.
-5. Among equal priority, take the lowest-numbered ID.
-6. If nothing is eligible, report why and stop — do not pick an `OPEN` or `ON-HOLD` item.
+4. Exclude `type: security` items whose private file `backlog/private/{ID}.md` does not exist (see below).
+5. Sort remaining items by `priority`: `must` → `should` → `could`.
+6. Among equal priority, take the lowest-numbered ID.
+7. If nothing is eligible, report why and stop — do not pick an `OPEN` or `ON-HOLD` item.
+
+## Security tickets
+
+A ticket with `type: security` is a public stub. Its real content is in `backlog/private/{ID}.md`, which is gitignored (see "Security tickets" in `backlog/README.md`).
+
+- **No private file, no work.** If the file is missing, the ticket belongs to another copy of the repository. Skip it when selecting. When the operator names it with `pickup {TICKET_ID}`, report that the private file is missing and stop. Never work from the stub alone, and never guess its content from the ID or title.
+- **Start the orchestrator with the private file in hand.** The orchestrator takes the description and acceptance criteria from the private file.
+- **Neutral wording.** Keep names, messages, and anything you print that may be committed free of vulnerability details. Branches use the ticket ID only, and commits say `Security fix {ID}`.
 
 ## Further reference
 

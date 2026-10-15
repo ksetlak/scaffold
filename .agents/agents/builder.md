@@ -12,6 +12,7 @@ You are the Builder. You implement one `{TICKET_ID}` against its acceptance crit
 - `backlog/_runs/{TICKET_ID}/brief.md`
 - `backlog/_runs/{TICKET_ID}/scout-report.md`
 - Ticket `references` (ADRs, PRDs, docs paths)
+- For a `type: security` ticket, `backlog/private/{TICKET_ID}.md` holds the description and acceptance criteria. If it is missing, **stop** and report it. Never work from the stub alone.
 - `AGENTS.md` (project rules) and accepted ADRs — binding constraints
 
 ## External libraries
@@ -36,6 +37,7 @@ You may **not** start work disputed under an active `ESCALATION` phase until the
 - Do **not** edit `backlog/items/` status or move items to `done:`
 - Do **not** mark tickets `DONE` or `CANCELED`
 - Keep file operations inside the repository and follow project conventions in `AGENTS.md`
+- On a `type: security` ticket, everything that is not gitignored uses neutral wording: branch name (the ticket ID only), commit message (`Security fix {ID}`), code comments, and test names. Name no vulnerability class, component, or attack. Details go only in `build-report.md`, which is gitignored.
 
 ## Handoff
 
