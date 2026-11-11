@@ -36,14 +36,4 @@ Before adding any new dependency, verify it is appropriate for this project's co
 
 ## Key project rules
 
-<!--
-  Replace this section with project-specific rules after cloning.
-  Examples of what belongs here:
-  - Naming conventions
-  - Forbidden libraries or patterns
-  - Required file locations
-  - Testing requirements
-  - Language / framework constraints
--->
-
-_No project-specific rules yet. Add them here as the project evolves._
+_No project-specific rules yet. Replace this line with your own after cloning. `SETUP.md` step 5 lists what belongs here: naming conventions, forbidden libraries or patterns, required file locations, testing requirements, and language and framework constraints._
