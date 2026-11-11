@@ -2,7 +2,7 @@
 
 "The Mothership has cleared the Scaffold. We are away."
 
-An opinionated, tool-agnostic project template for AI-assisted software development. It works with any agent harness that can read Markdown, such as Cursor, Claude Code, or Spotify Studio. Clone it, remove `.git`, rename the folder, and you have a ready-made factory for building a new application with AI agents doing the heavy lifting.
+An opinionated, tool-agnostic project template for AI-assisted software development. It works with any agent harness that can read Markdown, such as Cursor, Claude Code, or Open Code. Clone it, remove `.git`, rename the folder, and you have a ready-made factory for building a new application with AI agents doing the heavy lifting.
 
 ## What's included
 
