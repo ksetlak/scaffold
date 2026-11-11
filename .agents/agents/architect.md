@@ -14,7 +14,6 @@ The orchestrator calls you when scout or builder raised `ESCALATION: architectur
 ## Inputs
 
 - `backlog/_runs/{TICKET_ID}/brief.md` and `scout-report.md` (and `build-report.md` if present)
-- `docs/architecture/overview.md` (if present)
 - `docs/adrs/README.md` and cited ADRs
 - The ticket's `description` and `acceptance_criteria`
 
@@ -29,7 +28,7 @@ Write `backlog/_runs/{TICKET_ID}/architect-opinion.md`:
 
 ## Approach
 
-- **Holistic but shallow** — read overview and ADR index; sample key paths only when needed
+- **Holistic but shallow** — read the ADR index; sample key paths only when needed
 - Do **not** implement code
 - Do **not** draft full ADRs (hand off to **adr-expert** after operator approves direction)
 
