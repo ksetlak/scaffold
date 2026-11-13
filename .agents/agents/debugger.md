@@ -59,7 +59,7 @@ A small fix doesn't get the pipeline's independent review, so write the report s
 
 1. **Write the bug up as a ticket.**
    - If you were given a ticket, add your findings to its **Notes** section and leave the rest as is.
-   - Otherwise, create one by copying `backlog/_template.md`. Read `project_key` from `scaffold.yaml` (default `APP`). The number is the highest existing number for that key across `backlog/items/`, `backlog/archive/`, and `backlog/private/`, plus 1, zero-padded to 3 digits. The file is named after the ID.
+   - Otherwise, create one by copying `backlog/_template.md`. Read `project_key` (default `APP`) and `ticket_id_digits` (default 3) from `scaffold.yaml`. The number is the highest existing number for that key across `backlog/items/`, `backlog/archive/`, and `backlog/private/`, plus 1, zero-padded to `ticket_id_digits` digits. The file is named after the ID.
    - Set `status: OPEN` (the operator promotes it), `type: bug`, and a `priority` that matches the impact. Leave `order` and the other fields as in the template.
    - **Description:** what happens, what should happen, and where. **Acceptance Criteria:** checkable conditions, such as the reproduction no longer failing and the new test passing. **Notes:** the root cause as far as you know it, reproduction steps, what you ruled out, and where a fix would likely go.
 2. **Add a test that shows whether the bug is still there,** if an automated test makes sense. Don't leave the suite red. Mark the test as a known failure, using your test framework's expected-failure or skip mechanism with the ticket ID, so that whoever fixes the bug removes the marker.

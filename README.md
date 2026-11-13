@@ -14,7 +14,7 @@ An opinionated, tool-agnostic project template for AI-assisted software developm
 | `docs/prds/` | PRD template and index — capture product requirements before implementation |
 | `docs/meeting-notes/` | Running log of decisions made with the operator |
 | `AGENTS.md` | Canonical, tool-neutral AI agent instructions. Adapt it once to your project |
-| `scaffold.yaml` | Scaffold settings: ticket ID prefix and whether your tool supports subagents |
+| `scaffold.yaml` | Scaffold settings: ticket ID prefix and number width, and whether your tool supports subagents |
 | `SETUP.md` | Checklist for configuring a fresh clone for your specific project and tools |
 
 ## Where to look
@@ -46,7 +46,7 @@ scaffold/
 │   ├── prds/            # Product Requirements Documents
 │   └── meeting-notes/   # Session logs
 ├── AGENTS.md            # Canonical AI agent instructions
-├── scaffold.yaml        # Scaffold settings (project key, subagent support)
+├── scaffold.yaml        # Scaffold settings (project key, ticket ID width, subagent support)
 ├── README.md            # This file
 └── SETUP.md             # Per-project and per-tool setup checklist
 ```

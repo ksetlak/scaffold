@@ -7,6 +7,13 @@
 # Use a short, uppercase abbreviation of your project name.
 project_key: APP
 
+# How many digits the number in a ticket ID is zero-padded to.
+#   3 gives APP-001 (default), 4 gives APP-0001, 5 gives APP-00001.
+# Must be a positive whole number. A missing or invalid value means 3.
+# Changing it later does not rename existing tickets. A number that outgrows the
+# width simply gets longer, and IDs are still never reused.
+ticket_id_digits: 3
+
 # Can your AI tool run a subagent: an agent with its own fresh context window?
 #   true  - the orchestrator runs the whole pipeline and delegates each role to
 #           a subagent, using parallel subagents where that helps (default).

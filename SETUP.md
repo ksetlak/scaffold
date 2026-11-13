@@ -22,6 +22,8 @@ Open `scaffold.yaml` at the repository root. It's the one place for Scaffold's o
 
 **`project_key`** is the prefix for ticket IDs (for example `RC` gives `RC-001`, `RC-002`). Set it in `scaffold.yaml`, which is the source of truth. As a best practice, also update the `id` in `backlog/_template.md` to use the same key (for example `RC-000`). Agents read the key from `scaffold.yaml`, but the template is what people copy when they create a ticket by hand, so keeping the two in sync avoids tickets with the wrong prefix.
 
+**`ticket_id_digits`** is how many digits the number in a ticket ID is zero-padded to. The default is 3 (`RC-001`). Set it to 4 or 5 if you expect a large backlog (`RC-0001`). It must be a positive whole number, and a missing or invalid value means 3. If you change it, also update the width of the number in the template's `id` (for example `RC-0000`). Existing tickets keep their names, and IDs are still never reused.
+
 **`subagents`** declares whether your AI tool can run a subagent: an agent with its own fresh context window. Subagents aren't weighed down by other agents' reasoning, and aren't influenced by their approach. That isolation is what makes the reviewer and tester independent, so Scaffold treats subagents as the default way of working.
 
 | Value | Use it when | What happens |
@@ -69,7 +71,7 @@ If you have already made a significant architecture decision (language, framewor
 
 ## 7. Write your first backlog items
 
-Copy `backlog/_template.md` to `backlog/items/{PROJECT_KEY}-001.md`, using the key from `scaffold.yaml`, for each item. See `backlog/README.md` for the full schema. Set `status: READY` on items you want agents to pick up.
+Copy `backlog/_template.md` to `backlog/items/{PROJECT_KEY}-001.md`, using the key and the number width (`ticket_id_digits`) from `scaffold.yaml`, for each item. See `backlog/README.md` for the full schema. Set `status: READY` on items you want agents to pick up.
 
 ## You're ready
 

@@ -58,7 +58,7 @@ Read widely enough to be sure of what you claim, and no further.
 
 Each confirmed finding becomes a confidential ticket, written as the two files described in "Security tickets" in `backlog/README.md`.
 
-1. **Choose the ID.** Read `project_key` from `scaffold.yaml` (default `APP`). The number is the highest existing number for that key across `backlog/items/`, `backlog/archive/`, and `backlog/private/`, plus 1, zero-padded to 3 digits. Write the stub first, so the number is claimed before the private file exists.
+1. **Choose the ID.** Read `project_key` (default `APP`) and `ticket_id_digits` (default 3) from `scaffold.yaml`. The number is the highest existing number for that key across `backlog/items/`, `backlog/archive/`, and `backlog/private/`, plus 1, zero-padded to `ticket_id_digits` digits. Write the stub first, so the number is claimed before the private file exists.
 2. **Write the stub** `backlog/items/{ID}.md` by copying `backlog/_template.md`.
    - `type: security`, `status: OPEN` (the operator promotes it), and a `priority` matching the severity: `critical` or `high` is `must`, `medium` is `should`, `low` is `could`. Leave `order` and the other fields as in the template.
    - `title: Confidential security ticket`

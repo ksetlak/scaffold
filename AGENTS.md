@@ -11,7 +11,7 @@ This is the canonical agent instruction file for this repository. All AI tools s
 - `docs/adrs/` — Architecture Decision Records (index: `docs/adrs/README.md`)
 - `docs/prds/` — Product Requirements Documents (index: `docs/prds/README.md`)
 - `.agents/` — role-specific agent definitions, skills, and execution modes (index: `.agents/README.md`)
-- `scaffold.yaml` — Scaffold settings (project key, subagent support)
+- `scaffold.yaml` — Scaffold settings (project key, ticket ID width, subagent support)
 
 When exploring a documentation subfolder, read its `README.md` as an index before opening individual files.
 
@@ -28,7 +28,7 @@ Use the `pickup` skill (`.agents/skills/pickup/`) to work on backlog items. See 
 
 ## Configuration
 
-Scaffold's own settings (ticket ID prefix, whether subagents are available) live in `scaffold.yaml`. Read it when a task depends on them. It is not project documentation.
+Scaffold's own settings (ticket ID prefix and number width, whether subagents are available) live in `scaffold.yaml`. Read it when a task depends on them. It is not project documentation.
 
 ## Dependency checks
 
