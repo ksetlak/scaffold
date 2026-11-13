@@ -12,7 +12,7 @@ An opinionated, tool-agnostic project template for AI-assisted software developm
 | `backlog/` | Structured backlog — one Markdown file per item, with YAML frontmatter, schema rules, and agent workflow reference |
 | `docs/adrs/` | ADR template and index — record every significant architecture decision |
 | `docs/prds/` | PRD template and index — capture product requirements before implementation |
-| `docs/meeting-notes/` | Running log of decisions made with the operator |
+| `docs/meeting-notes/` | Notes from meetings related to the project |
 | `AGENTS.md` | Canonical, tool-neutral AI agent instructions. Adapt it once to your project |
 | `scaffold.yaml` | Scaffold settings: ticket ID prefix and number width, and whether your tool supports subagents |
 | `SETUP.md` | Checklist for configuring a fresh clone for your specific project and tools |
@@ -25,6 +25,10 @@ An opinionated, tool-agnostic project template for AI-assisted software developm
 - **PRD template**: `docs/prds/_template.md`
 - **Settings**: `scaffold.yaml`
 - **AI tool setup**: `SETUP.md`
+
+## Terminology
+
+The person who owns the project and directs the agents is referred to as the operator. Scaffold's files use this word instead of "user", because "user" usually means the end user of the software being built.
 
 ## Repository layout
 
