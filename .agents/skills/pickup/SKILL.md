@@ -15,6 +15,8 @@ Entry point for backlog delivery. Runs one ticket end-to-end until `AWAITING_OPE
 | Command | Behaviour |
 |---------|-----------|
 | `pickup` | Auto-select the highest-priority `READY` item with satisfied dependencies |
+| `pickup --dry-run` | Show the one ticket `pickup` would start with right now, and why. Changes nothing (see "Listing modes") |
+| `pickup --top {N}` | Show the next `N` eligible tickets in pickup order. Changes nothing (see "Listing modes") |
 | `pickup {TICKET_ID}` | Work that specific ticket if `READY` (or report why not) |
 | `pickup --continue {TICKET_ID}` | Resume an `IN_PROGRESS` or paused ticket from `run.json` and the existing run artifacts. Also the way back to the orchestrator after a manually relayed role finishes |
 
@@ -48,6 +50,16 @@ Before any work starts, print a short selection log. This is a report, not a gat
 - If more than 5 tickets were skipped, list the 5 that would have ranked highest and give the count of the rest.
 
 When the operator names a ticket with `pickup {TICKET_ID}`, there is no selection to explain, so skip the log.
+
+### Listing modes
+
+`pickup --dry-run` and `pickup --top {N}` run the selection steps above and then stop. They only report.
+
+- **No side effects.** Do not change any ticket status, create a branch, write run artifacts, or start the orchestrator.
+- **`--dry-run`** reports the one ticket a plain `pickup` would start with now, using the same log as "Report the selection", with "Would start with" in place of "Picked".
+- **`--top {N}`** reports the first `N` eligible tickets in pickup order. `N` must be a positive integer. Each line has the ticket ID, title, and priority. If fewer than `N` tickets are eligible, list those and say how many there were.
+- **Skipped tickets** are reported as in "Report the selection": those that would have ranked ahead of the last listed ticket, each with a one-line reason, capped at 5 plus a count of the rest.
+- **Fan-out use.** The listed tickets are the input for an orchestrator that starts one sub-agent per ticket, each running `pickup {TICKET_ID}`. A ticket that depends on another `READY` ticket is never listed, so the tickets are independent in the backlog. They may still touch the same files, so give parallel runs separate working copies. How is the orchestrator's call.
 
 ## Security tickets
 
