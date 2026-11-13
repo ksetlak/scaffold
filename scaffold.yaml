@@ -13,5 +13,5 @@ project_key: APP
 #   false - the orchestrator does its own step, then stops and hands you a
 #           ready-to-paste prompt for the next role. You start each role in a
 #           new session.
-# If this is wrong, Scaffold still finds its way, but it works best when it's right.
+# If this is set incorrectly, Scaffold should still be able to find its way, but it works best when it's telling the truth. ;)
 subagents: true
