@@ -39,6 +39,16 @@ How the skill is triggered depends on your tool: a slash command, a skill picker
 6. Among equal priority, take the lowest-numbered ID.
 7. If nothing is eligible, report why and stop — do not pick an `OPEN` or `ON-HOLD` item.
 
+### Report the selection
+
+Before any work starts, print a short selection log. This is a report, not a gate: do not ask for confirmation, and continue straight into the work.
+
+- **Picked:** the ticket ID and title, with the reason in one line (for example, "highest priority `must`, lowest ID among equals").
+- **Skipped:** every ticket that would have ranked ahead of the picked one but was excluded, each with a one-line reason: not `READY`, a dependency that isn't `AWAITING_OPERATOR` or `DONE` yet (name it), or a missing private file for a `security` ticket.
+- If more than 5 tickets were skipped, list the 5 that would have ranked highest and give the count of the rest.
+
+When the operator names a ticket with `pickup {TICKET_ID}`, there is no selection to explain, so skip the log.
+
 ## Security tickets
 
 A ticket with `type: security` is a public stub. Its real content is in `backlog/private/{ID}.md`, which is gitignored (see "Security tickets" in `backlog/README.md`).
