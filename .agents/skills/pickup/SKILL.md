@@ -14,7 +14,7 @@ Entry point for backlog delivery. Runs one ticket end-to-end until `AWAITING_OPE
 
 | Command | Behaviour |
 |---------|-----------|
-| `pickup` | Auto-select the highest-priority `READY` item with satisfied dependencies |
+| `pickup` | Auto-select the next `READY` item in the operator's order (`order`, then `priority`, then ID) with satisfied dependencies |
 | `pickup --dry-run` | Show the one ticket `pickup` would start with right now, and why. Changes nothing (see "Listing modes") |
 | `pickup --top {N}` | Show the next `N` eligible tickets in pickup order. Changes nothing (see "Listing modes") |
 | `pickup {TICKET_ID}` | Work that specific ticket if `READY` (or report why not) |
@@ -37,15 +37,15 @@ How the skill is triggered depends on your tool: a slash command, a skill picker
 2. Exclude anything that is not `status: READY`.
 3. Exclude items whose `dependencies` are not yet `AWAITING_OPERATOR` or `DONE`.
 4. Exclude `type: security` items whose private file `backlog/private/{ID}.md` does not exist (see below).
-5. Sort remaining items by `priority`: `must` → `should` → `could`.
-6. Among equal priority, take the lowest-numbered ID.
+5. Sort remaining items by `order`, lowest first. An item with no `order`, or with `order: 0.0` (the template default), is unordered and comes after every ordered item, whatever the ordered values are.
+6. Break ties, which includes all unordered items among themselves, by `priority` (`must` → `should` → `could`), then take the lowest-numbered ID.
 7. If nothing is eligible, report why and stop — do not pick an `OPEN` or `ON-HOLD` item.
 
 ### Report the selection
 
 Before any work starts, print a short selection log. This is a report, not a gate: do not ask for confirmation, and continue straight into the work.
 
-- **Picked:** the ticket ID and title, with the reason in one line (for example, "highest priority `must`, lowest ID among equals").
+- **Picked:** the ticket ID and title, with the reason in one line (for example, "first in the operator's order", or, when nothing is ordered, "highest priority `must`, lowest ID among equals").
 - **Skipped:** every ticket that would have ranked ahead of the picked one but was excluded, each with a one-line reason: not `READY`, a dependency that isn't `AWAITING_OPERATOR` or `DONE` yet (name it), or a missing private file for a `security` ticket.
 - If more than 5 tickets were skipped, list the 5 that would have ranked highest and give the count of the rest.
 

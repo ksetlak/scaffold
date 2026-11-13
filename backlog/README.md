@@ -51,10 +51,10 @@ Ticket IDs use `{PROJECT_KEY}-{NNN}` (e.g. `APP-001` when `project_key` in `scaf
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `order` | float | Visual sort position within a priority column. Set by the Scaffold app or operator — agents read it for sorting but never assign or modify it. Lower value = higher on the board. |
 | `references.adrs` | list | ADR filenames this item relates to |
 | `references.prds` | list | PRD filenames this item relates to |
 | `references.docs` | list | Other doc paths relevant to this item |
+| `order` | float | An additional field used by the [Q-CTRL](https://github.com/ksetlak/q-ctrl) app (or any other system that assumes tickets are sorted in some particular order) — agents read it for sorting but never assign or modify it. Lower value = higher on the board. `pickup` ranks `READY` tickets by it first, then by `priority`, then by ID. A missing value or `0.0` (the template default) means "not yet ordered", and those tickets come after all ordered ones. |
 
 ## Markdown body
 
