@@ -76,7 +76,11 @@ Keep the project-specific rules in this file. When you update Scaffold, Copier m
 
 If you have already made a significant architecture decision (language, framework, database), record it now before you forget the reasoning. Use the template at `docs/adrs/_template.md`.
 
-## 7. Write your first backlog items
+## 7. Start your backlog
+
+You are free to either manually interact with your backlog or add [Q-CTRL](https://github.com/ksetlak/q-ctrl) to your Scaffold setup.
+
+### 7.a. Manually managing backlog items
 
 Copy `backlog/_template.md` to `backlog/items/{PROJECT_KEY}-001.md`, using the key and the number width from `.copier-answers.yml`, for each item. See `backlog/README.md` for the full schema. Set `status: READY` on items you want agents to pick up.
 
