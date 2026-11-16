@@ -1,0 +1,7 @@
+.DS_Store
+
+# Ephemeral agent run artifacts
+backlog/_runs/
+
+# Confidential bodies of security tickets (see backlog/README.md)
+backlog/private/

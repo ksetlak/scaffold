@@ -1,0 +1,43 @@
+# Copier configuration for Scaffold.
+#
+# Only the contents of template/ are copied into a project. Everything else in
+# this repository (README, this file) describes Scaffold itself.
+
+_subdirectory: template
+_templates_suffix: .jinja
+
+# The project owns its README from the moment it exists.
+# AGENTS.md and scaffold.yaml are not listed: updates merge into them, so the
+# project's own rules and settings are kept.
+_skip_if_exists:
+  - README.md
+
+_message_after_copy: |
+  Scaffold is ready in {{ _copier_conf.dst_path }}.
+  Next: open SETUP.md and work through the checklist.
+
+# Project properties, asked once when the project is created. Copier records
+# the answers in .copier-answers.yml, which agents read. Don't edit that file
+# by hand. To change an answer later, run `copier update` and answer again.
+
+project_name:
+  type: str
+  help: Project name (used in the generated README)
+
+project_key:
+  type: str
+  help: Ticket ID prefix, a short uppercase abbreviation (APP gives APP-001)
+  default: APP
+  validator: >-
+    {% if not (project_key | regex_search('^[A-Z][A-Z0-9]{1,9}$')) %}
+    Use 2 to 10 uppercase letters or digits, starting with a letter.
+    {% endif %}
+
+ticket_id_digits:
+  type: int
+  help: Digits in the ticket number, zero-padded (3 gives APP-001, 4 gives APP-0001)
+  default: 3
+  validator: >-
+    {% if ticket_id_digits < 1 or ticket_id_digits > 9 %}
+    Use a whole number from 1 to 9.
+    {% endif %}
