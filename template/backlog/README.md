@@ -12,7 +12,7 @@ backlog/
 └── README.md    # this file
 ```
 
-Ticket IDs use `{PROJECT_KEY}-{NNN}` (e.g. `APP-001` when `project_key` in `scaffold.yaml` is `APP`). The number is zero-padded to `ticket_id_digits` in `scaffold.yaml` (default 3, so `APP-001`; 4 gives `APP-0001`). IDs MUST NOT be reused, even if an item is cancelled. Filenames match the ticket ID (e.g. `APP-001.md`).
+Ticket IDs use `{PROJECT_KEY}-{NNN}` (e.g. `APP-001` when `project_key` in `.copier-answers.yml` is `APP`). The number is zero-padded to `ticket_id_digits` in the same file (default 3, so `APP-001`; 4 gives `APP-0001`). IDs MUST NOT be reused, even if an item is cancelled. Filenames match the ticket ID (e.g. `APP-001.md`).
 
 ## Statuses
 

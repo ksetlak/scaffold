@@ -42,7 +42,7 @@ When you notice something that isn't security, such as a plain bug or a slow que
 
 - The code in scope, and for a sweep the dependency manifests, lockfiles, and config
 - `AGENTS.md` (project rules) and the ADRs and docs that describe trust boundaries
-- `scaffold.yaml` for `project_key`
+- `.copier-answers.yml` for `project_key` and `ticket_id_digits`
 - The ticket, if you were given one
 
 Read widely enough to be sure of what you claim, and no further.
@@ -58,7 +58,7 @@ Read widely enough to be sure of what you claim, and no further.
 
 Each confirmed finding becomes a confidential ticket, written as the two files described in "Security tickets" in `backlog/README.md`.
 
-1. **Choose the ID.** Read `project_key` (default `APP`) and `ticket_id_digits` (default 3) from `scaffold.yaml`. The number is the highest existing number for that key across `backlog/items/`, `backlog/archive/`, and `backlog/private/`, plus 1, zero-padded to `ticket_id_digits` digits. Write the stub first, so the number is claimed before the private file exists.
+1. **Choose the ID.** Read `project_key` (default `APP`) and `ticket_id_digits` (default 3) from `.copier-answers.yml`. The number is the highest existing number for that key across `backlog/items/`, `backlog/archive/`, and `backlog/private/`, plus 1, zero-padded to `ticket_id_digits` digits. Write the stub first, so the number is claimed before the private file exists.
 2. **Write the stub** `backlog/items/{ID}.md` by copying `backlog/_template.md`.
    - `type: security`, `status: OPEN` (the operator promotes it), and a `priority` matching the severity: `critical` or `high` is `must`, `medium` is `should`, `low` is `could`. Leave `order` and the other fields as in the template.
    - `title: Confidential security ticket`

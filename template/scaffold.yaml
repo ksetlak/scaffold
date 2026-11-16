@@ -1,18 +1,11 @@
 # Scaffold configuration.
 #
-# Settings for Scaffold itself. Set them once during setup (see SETUP.md).
+# Settings that can change while the project is under way. Edit this file
+# whenever your situation changes, for example when you switch AI tools.
 # A missing file or key falls back to the default shown here.
-
-# Prefix for ticket IDs: APP-001, APP-002, ...
-# Use a short, uppercase abbreviation of your project name.
-project_key: APP
-
-# How many digits the number in a ticket ID is zero-padded to.
-#   3 gives APP-001 (default), 4 gives APP-0001, 5 gives APP-00001.
-# Must be a positive whole number. A missing or invalid value means 3.
-# Changing it later does not rename existing tickets. A number that outgrows the
-# width simply gets longer, and IDs are still never reused.
-ticket_id_digits: 3
+#
+# Project properties chosen when the project was created (ticket ID prefix and
+# number width) live in .copier-answers.yml, which Copier manages.
 
 # Can your AI tool run a subagent: an agent with its own fresh context window?
 #   true  - the orchestrator runs the whole pipeline and delegates each role to

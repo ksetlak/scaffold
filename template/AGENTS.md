@@ -11,7 +11,8 @@ This is the canonical agent instruction file for this repository. All AI tools s
 - `docs/adrs/` — Architecture Decision Records (index: `docs/adrs/README.md`)
 - `docs/prds/` — Product Requirements Documents (index: `docs/prds/README.md`)
 - `.agents/` — role-specific agent definitions, skills, and execution modes (index: `.agents/README.md`)
-- `scaffold.yaml` — Scaffold settings (project key, ticket ID width, subagent support)
+- `.copier-answers.yml` — project properties chosen at creation (ticket ID prefix and number width). Managed by Copier; never edit by hand
+- `scaffold.yaml` — Scaffold settings that can change during the project (subagent support)
 
 When exploring a documentation subfolder, read its `README.md` as an index before opening individual files.
 
@@ -28,7 +29,10 @@ Use the `pickup` skill (`.agents/skills/pickup/`) to work on backlog items. See 
 
 ## Configuration
 
-Scaffold's own settings (ticket ID prefix and number width, whether subagents are available) live in `scaffold.yaml`. Read it when a task depends on them. It is not project documentation.
+Scaffold's configuration lives in two files. Read them when a task depends on them. Neither is project documentation.
+
+- `.copier-answers.yml` holds the ticket ID prefix (`project_key`) and number width (`ticket_id_digits`). Never edit it by hand. Copier manages it.
+- `scaffold.yaml` holds settings the operator may change at any time, such as whether subagents are available.
 
 ## Dependency checks
 

@@ -1,28 +1,35 @@
 # Setup
 
-Follow this checklist after cloning Scaffold for a new project.
+Follow this checklist after creating a project from Scaffold.
 
-## 1. Reinitialise git
+## 1. Check the generated files
+
+Copier asked for your project name, ticket ID prefix, and ticket number width, then generated this project. Your answers are in `.copier-answers.yml`. Copier manages that file and needs it for updates, so never edit it by hand.
+
+If you generated into a new folder, initialise git and commit:
 
 ```bash
-rm -rf .git
 git init
 git add .
 git commit -m "chore: init from Scaffold"
 ```
 
-## 2. Rename the project
+Commit `.copier-answers.yml` along with everything else. Updates depend on it.
 
-- Rename the folder to your project name.
-- Find and replace any remaining `scaffold` references in `README.md` and `AGENTS.md`.
+## 2. Add Scaffold to an existing repository
 
-## 3. Configure Scaffold
+To add Scaffold to a repository that already exists, run Copier from inside it instead of generating a new folder. Start from a clean working tree. Copier asks the same questions, then copies the Scaffold files in. If a file with the same name already exists, Copier asks what to do, so review each one. `AGENTS.md` is the most likely overlap. Keep your existing rules and merge Scaffold's sections around them.
 
-Open `scaffold.yaml` at the repository root. It's the one place for Scaffold's own settings, and it's meant to be edited.
+## 3. Understand the two configuration files
 
-**`project_key`** is the prefix for ticket IDs (for example `RC` gives `RC-001`, `RC-002`). Set it in `scaffold.yaml`, which is the source of truth. As a best practice, also update the `id` in `backlog/_template.md` to use the same key (for example `RC-000`). Agents read the key from `scaffold.yaml`, but the template is what people copy when they create a ticket by hand, so keeping the two in sync avoids tickets with the wrong prefix.
+| File | Holds | Edit it? |
+|------|-------|----------|
+| `.copier-answers.yml` | Project properties chosen once: `project_key` (ticket ID prefix) and `ticket_id_digits` (width of the ticket number) | No. Copier manages it |
+| `scaffold.yaml` | Settings that can change during the project, currently `subagents` | Yes, whenever your situation changes |
 
-**`ticket_id_digits`** is how many digits the number in a ticket ID is zero-padded to. The default is 3 (`RC-001`). Set it to 4 or 5 if you expect a large backlog (`RC-0001`). It must be a positive whole number, and a missing or invalid value means 3. If you change it, also update the width of the number in the template's `id` (for example `RC-0000`). Existing tickets keep their names, and IDs are still never reused.
+**`project_key`** is the prefix for ticket IDs (for example `RC` gives `RC-001`, `RC-002`). **`ticket_id_digits`** is how many digits the number is zero-padded to. The default is 3 (`RC-001`). Existing tickets keep their names if you change either one later, and IDs are never reused. Both also shape the `id` in `backlog/_template.md`, which is generated from your answers.
+
+To change an answer after creation, run `copier update` and answer the questions again. See "Updating Scaffold" below.
 
 **`subagents`** declares whether your AI tool can run a subagent: an agent with its own fresh context window. Subagents aren't weighed down by other agents' reasoning, and aren't influenced by their approach. That isolation is what makes the reviewer and tester independent, so Scaffold treats subagents as the default way of working.
 
@@ -36,7 +43,7 @@ Scaffold is built to be universal and harness-agnostic, but telling it a little 
 - If it's `true` but no isolated subagent can be spawned, the orchestrator falls back to the manual relay, tells you why, and suggests changing the setting.
 - If it's `false` but the tool clearly offers subagents, the orchestrator keeps following the setting and suggests that you change it.
 
-Getting this right lets you make much better use of the tooling you already have. Check it once, and revisit it if you change tools.
+Getting this right lets you make much better use of the tooling you already have. Revisit it whenever you switch tools.
 
 ## 4. Connect your AI tool
 
@@ -63,7 +70,7 @@ Open it and make it yours:
 - Replace the placeholder under **Key project rules** with the rules that apply to your project: naming conventions, forbidden libraries or patterns, required file locations, testing requirements, and language and framework constraints.
 - Adjust the working style and any other section that doesn't fit how your team works.
 
-Keep the project-specific rules in this file, and keep Scaffold's settings in `scaffold.yaml`. If you later pull newer Scaffold files into your project, this separation keeps the merge small.
+Keep the project-specific rules in this file. When you update Scaffold, Copier merges its changes into your edits. It only raises a conflict where you and Scaffold changed the same lines.
 
 ## 6. Write your first ADR (optional but recommended)
 
@@ -71,8 +78,14 @@ If you have already made a significant architecture decision (language, framewor
 
 ## 7. Write your first backlog items
 
-Copy `backlog/_template.md` to `backlog/items/{PROJECT_KEY}-001.md`, using the key and the number width (`ticket_id_digits`) from `scaffold.yaml`, for each item. See `backlog/README.md` for the full schema. Set `status: READY` on items you want agents to pick up.
+Copy `backlog/_template.md` to `backlog/items/{PROJECT_KEY}-001.md`, using the key and the number width from `.copier-answers.yml`, for each item. See `backlog/README.md` for the full schema. Set `status: READY` on items you want agents to pick up.
 
 ## You're ready
 
 Ask your agent to run the `pickup` skill to start the first backlog item.
+
+## Updating Scaffold
+
+Scaffold releases are tagged versions. To move your project to the latest release, commit or stash your changes so the working tree is clean, then run `copier update` from the project root. Copier compares the version your project was generated from with the new one and applies only what changed between them, so your edits are kept. Where you and Scaffold changed the same lines, it leaves conflict markers for you to resolve. Review the result and commit it.
+
+`copier update` also lets you change your answers, such as `project_key`. Copier needs `.copier-answers.yml` to know which version you're on, so keep it committed and unedited.
