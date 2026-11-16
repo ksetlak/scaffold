@@ -86,3 +86,10 @@ copier update
 Copier applies what changed in Scaffold since your project was generated, and keeps your own edits. Where you changed the same lines as Scaffold, it leaves conflict markers for you to resolve. Keep `.copier-answers.yml` committed and never edit it by hand.
 
 Updates work from tagged releases, so a project can only be updated to a version that has a tag.
+
+---
+
+## License
+
+MIT — see [LICENSE](LICENSE).  
+Copyright (c) 2026 Krzysztof Setlak.
