@@ -5,3 +5,6 @@ backlog/_runs/
 
 # Confidential bodies of security tickets (see backlog/README.md)
 backlog/private/
+
+# Personal Scaffold settings (see scaffold.yaml)
+scaffold.local.yaml

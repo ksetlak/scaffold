@@ -24,7 +24,7 @@ How the skill is triggered depends on your tool: a slash command, a skill picker
 
 ## Rules
 
-- **Work until done, or until the next hand-off.** Follow the execution mode set in `scaffold.yaml` (see `.agents/agents/orchestrator.md`). In delegated mode, keep going until `AWAITING_OPERATOR` or an operator gate. In manual mode, complete one step and stop with the relay prompt for the next role.
+- **Work until done, or until the next hand-off.** Follow the execution mode set in `scaffold.yaml` and `scaffold.local.yaml` (see `.agents/agents/orchestrator.md`). In delegated mode, keep going until `AWAITING_OPERATOR` or an operator gate. In manual mode, complete one step and stop with the relay prompt for the next role.
 - **One ticket per invocation.** Do not pick up a second ticket in the same session. Stop cleanly once the current ticket is complete.
 - **Never set `DONE` or `CANCELED`.** These are operator-only actions. Agents set `IN_PROGRESS` and `AWAITING_OPERATOR` only.
 - **Never pick `OPEN` or `ON-HOLD` items.** Only `READY` items are eligible unless the operator explicitly overrides.

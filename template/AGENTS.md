@@ -12,7 +12,7 @@ This is the canonical agent instruction file for this repository. All AI tools s
 - `docs/prds/` — Product Requirements Documents (index: `docs/prds/README.md`)
 - `.agents/` — role-specific agent definitions, skills, and execution modes (index: `.agents/README.md`)
 - `.copier-answers.yml` — project properties chosen at creation (ticket ID prefix and number width). Managed by Copier; never edit by hand
-- `scaffold.yaml` — Scaffold settings that can change during the project (subagent support)
+- `scaffold.yaml` — Scaffold settings that can change during the project (subagent support). `scaffold.local.yaml`, if present, holds one operator's personal overrides and is not committed
 
 When exploring a documentation subfolder, read its `README.md` as an index before opening individual files.
 
@@ -29,10 +29,11 @@ Use the `pickup` skill (`.agents/skills/pickup/`) to work on backlog items. See 
 
 ## Configuration
 
-Scaffold's configuration lives in two files. Read them when a task depends on them. Neither is project documentation.
+Scaffold's configuration lives in these files. Read them when a task depends on them. None of them is project documentation.
 
 - `.copier-answers.yml` holds the ticket ID prefix (`project_key`) and number width (`ticket_id_digits`). Never edit it by hand. Copier manages it.
-- `scaffold.yaml` holds settings the operator may change at any time, such as whether subagents are available.
+- `scaffold.yaml` holds settings the operator may change at any time, such as whether subagents are available. It is committed and holds the project's shared defaults.
+- `scaffold.local.yaml` is optional and not committed. It holds one operator's personal overrides. Read it after `scaffold.yaml`, and let its keys win. Never create it or commit it on the operator's behalf.
 
 ## Dependency checks
 

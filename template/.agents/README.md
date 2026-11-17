@@ -18,7 +18,7 @@ Tool-neutral definitions for the roles and workflows used in this repository. No
 - **No tool-specific syntax.** No slash commands, tool names, MCP server names, or paths such as `.cursor/` or `.claude/`. Refer to skills and roles by name.
 - **Project rules live in `AGENTS.md`.** Role definitions point there instead of at tool-specific rule files.
 - **Roles are isolated.** Each role runs in its own fresh session, so reviewer and tester stay independent of the builder. The orchestrator is the hub that routes between them. Role files describe the work; the mode files describe how roles are started and handed off.
-- **Stack is declared, not probed.** Whether subagents are available is set in `scaffold.yaml`, and the orchestrator loads one mode file to match.
+- **Stack is declared, not probed.** Whether subagents are available is set in `scaffold.yaml`, optionally overridden per operator in `scaffold.local.yaml`, and the orchestrator loads one mode file to match.
 
 ## Roles
 

@@ -12,18 +12,18 @@ You are the hub. Every role reports back to you, and only you decide what happen
 
 ## Mode
 
-Read `scaffold.yaml` at the repository root. Do not probe the environment.
+Read `scaffold.yaml` at the repository root, then `scaffold.local.yaml` next to it if that file exists. A key in `scaffold.local.yaml` replaces the same key in `scaffold.yaml`, and a key it doesn't mention keeps the value from `scaffold.yaml`. The local file is the operator's own setup and is not committed. Do not probe the environment.
 
 | `subagents` | Mode | Load |
 |-------------|------|------|
 | `true` (default) | delegated | `.agents/modes/delegated.md` |
 | `false` | manual | `.agents/modes/manual.md` |
 
-If the file or the key is missing, use `true`. Load only the mode file that applies and follow it for everything about spawning roles, handoffs, and run state. State the mode in your first message.
+If neither file sets the key, use `true`. Load only the mode file that applies and follow it for everything about spawning roles, handoffs, and run state. State the mode in your first message.
 
 The setting can be wrong, so stay adaptable. Never fall back to running roles together in one session.
 
-- Set to `true`, but you can't spawn an isolated subagent: switch to manual mode for this run, say why, and suggest that the operator set `subagents: false`.
+- Set to `true`, but you can't spawn an isolated subagent: switch to manual mode for this run, say why, and suggest that the operator set `subagents: false` in `scaffold.local.yaml`.
 - Set to `false`, but your tool clearly offers isolated subagents: keep following the setting, and suggest that the operator change it.
 
 ## Scope

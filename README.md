@@ -16,7 +16,8 @@ Scaffold is distributed as a [Copier](https://copier.readthedocs.io) template. C
 | `docs/prds/` | PRD template and index. Capture product requirements before implementation |
 | `docs/meeting-notes/` | Notes from meetings related to the project |
 | `AGENTS.md` | Canonical, tool-neutral AI agent instructions. Adapt it once to your project |
-| `scaffold.yaml` | Settings that can change during the project, such as whether your tool supports subagents |
+| `scaffold.yaml` | Settings that can change during the project, such as whether your tool supports subagents. These are the shared defaults |
+| `scaffold.local.yaml` | Optional, not committed. One person's overrides of `scaffold.yaml`, for settings that depend on their own tool |
 | `.copier-answers.yml` | Project properties chosen at creation (ticket ID prefix and number width). Managed by Copier |
 | `SETUP.md` | Checklist for configuring the new project for your tools |
 | `README.md` | A starter README for your project |

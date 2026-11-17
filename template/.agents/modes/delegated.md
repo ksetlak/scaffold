@@ -1,6 +1,6 @@
 # Delegated mode
 
-Used when `subagents: true` in `scaffold.yaml`. Your tool can run a subagent with a fresh context, so use one for every role and spend as little as possible on ceremony.
+Used when `subagents` is `true` in `scaffold.yaml` or `scaffold.local.yaml`. Your tool can run a subagent with a fresh context, so use one for every role and spend as little as possible on ceremony.
 
 ## Spawning a role
 

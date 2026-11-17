@@ -1,6 +1,6 @@
 # Manual mode
 
-Used when `subagents: false` in `scaffold.yaml`. The tool can't give a role a fresh context, so the operator starts each role in a new session and you hand off between them. Be strict. Roles never share a session, because the reviewer and tester are only independent if they haven't watched the builder work.
+Used when `subagents` is `false` in `scaffold.yaml` or `scaffold.local.yaml`. The tool can't give a role a fresh context, so the operator starts each role in a new session and you hand off between them. Be strict. Roles never share a session, because the reviewer and tester are only independent if they haven't watched the builder work.
 
 ## Run state
 

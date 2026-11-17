@@ -4,6 +4,11 @@
 # whenever your situation changes, for example when you switch AI tools.
 # A missing file or key falls back to the default shown here.
 #
+# This file is committed, so it holds the project's shared defaults. A setting
+# that depends on one person's tool or machine belongs in scaffold.local.yaml
+# instead. Create that file next to this one and list only the keys you want to
+# override. It is ignored by git, and its values win over the ones below.
+#
 # Project properties chosen when the project was created (ticket ID prefix and
 # number width) live in .copier-answers.yml, which Copier manages.
 

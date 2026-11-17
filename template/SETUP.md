@@ -20,12 +20,13 @@ Commit `.copier-answers.yml` along with everything else. Updates depend on it.
 
 To add Scaffold to a repository that already exists, run Copier from inside it instead of generating a new folder. Start from a clean working tree. Copier asks the same questions, then copies the Scaffold files in. If a file with the same name already exists, Copier asks what to do, so review each one. `AGENTS.md` is the most likely overlap. Keep your existing rules and merge Scaffold's sections around them.
 
-## 3. Understand the two configuration files
+## 3. Understand the configuration files
 
-| File | Holds | Edit it? |
-|------|-------|----------|
-| `.copier-answers.yml` | Project properties chosen once: `project_key` (ticket ID prefix) and `ticket_id_digits` (width of the ticket number) | No. Copier manages it |
-| `scaffold.yaml` | Settings that can change during the project, currently `subagents` | Yes, whenever your situation changes |
+| File | Holds | Edit it? | Committed? |
+|------|-------|----------|------------|
+| `.copier-answers.yml` | Project properties chosen once: `project_key` (ticket ID prefix) and `ticket_id_digits` (width of the ticket number) | No. Copier manages it | Yes |
+| `scaffold.yaml` | Settings that can change during the project, currently `subagents`. These are the project's shared defaults | Yes, whenever your situation changes | Yes |
+| `scaffold.local.yaml` | Your personal overrides of `scaffold.yaml`. It doesn't exist until you create it | Yes, it's yours | No. It's in `.gitignore` |
 
 **`project_key`** is the prefix for ticket IDs (for example `RC` gives `RC-001`, `RC-002`). **`ticket_id_digits`** is how many digits the number is zero-padded to. The default is 3 (`RC-001`). Existing tickets keep their names if you change either one later, and IDs are never reused. Both also shape the `id` in `backlog/_template.md`, which is generated from your answers.
 
@@ -44,6 +45,16 @@ Scaffold is built to be universal and harness-agnostic, but telling it a little 
 - If it's `false` but the tool clearly offers subagents, the orchestrator keeps following the setting and suggests that you change it.
 
 Getting this right lets you make much better use of the tooling you already have. Revisit it whenever you switch tools.
+
+### Personal settings with `scaffold.local.yaml`
+
+Whether your tool can run subagents is a fact about your tool, not about the project. On a team, each person may use a different tool, so one person's value shouldn't be committed for everyone. To override a setting for yourself only, create `scaffold.local.yaml` next to `scaffold.yaml` and list just the keys you want to change:
+
+```yaml
+subagents: false
+```
+
+Agents read `scaffold.yaml` first, then `scaffold.local.yaml`. A key in the local file replaces the same key in `scaffold.yaml`, and any key it leaves out keeps the shared value. The file is already in `.gitignore`, so it stays on your machine. If you're the only person on the project, you can skip it and edit `scaffold.yaml` directly.
 
 ## 4. Connect your AI tool
 
