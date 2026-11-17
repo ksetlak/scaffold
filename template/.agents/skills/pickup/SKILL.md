@@ -37,7 +37,7 @@ How the skill is triggered depends on your tool: a slash command, a skill picker
 2. Exclude anything that is not `status: READY`.
 3. Exclude items whose `dependencies` are not yet `AWAITING_OPERATOR` or `DONE`.
 4. Exclude `type: security` items whose private file `backlog/private/{ID}.md` does not exist (see below).
-5. Sort remaining items by `order`, lowest first. An item with no `order`, or with `order: 0.0` (the template default), is unordered and comes after every ordered item, whatever the ordered values are.
+5. Sort remaining items by `order`, lowest first. An item with no `order` value is unordered and comes after every ordered item, whatever the ordered values are.
 6. Break ties, which includes all unordered items among themselves, by `priority` (`must` → `should` → `could`), then take the lowest-numbered ID.
 7. If nothing is eligible, report why and stop — do not pick an `OPEN` or `ON-HOLD` item.
 

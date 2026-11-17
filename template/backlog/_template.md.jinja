@@ -6,7 +6,6 @@ type: feature
 priority: must
 milestone: M1
 dependencies: []
-order: 0.0
 references:
   adrs: []
   prds: []
