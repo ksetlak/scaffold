@@ -64,7 +64,7 @@ Install Copier with `pipx install copier` or `uv tool install copier`, or run it
 
 ## Getting started
 
-Create a new project:
+Create a new project. The last argument is the destination folder, and Copier creates it if it doesn't exist:
 
 ```bash
 copier copy <this-repo-url> my-project
@@ -74,7 +74,13 @@ git init && git add . && git commit -m "chore: init from Scaffold"
 
 Copier asks for the project name, the ticket ID prefix, and the ticket number width. Then follow `SETUP.md` in the new project.
 
-To add Scaffold to a repository that already exists, run `copier copy <this-repo-url> .` from inside it, with a clean working tree.
+To add Scaffold to a repository that already exists, run Copier from inside it and use `.` as the destination, which means the current folder:
+
+```bash
+copier copy <this-repo-url> .
+```
+
+Copier doesn't require a clean working tree for this, but start from one anyway. Then `git status` shows exactly which files Scaffold added or changed, and you can review them before committing.
 
 ## Updating a project
 

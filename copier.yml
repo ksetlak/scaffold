@@ -13,8 +13,8 @@ _skip_if_exists:
   - README.md
 
 _message_after_copy: |
-  Scaffold is ready in {{ _copier_conf.dst_path }}.
-  Next: open SETUP.md and work through the checklist.
+  Scaffold is ready.
+  Next: open SETUP.md in the project folder and work through the checklist.
 
 # Project properties, asked once when the project is created. Copier records
 # the answers in .copier-answers.yml, which agents read. Don't edit that file
