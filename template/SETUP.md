@@ -89,11 +89,15 @@ If you have already made a significant architecture decision (language, framewor
 
 ## 7. Start your backlog
 
-You are free to either manually interact with your backlog or add [Q-CTRL](https://github.com/ksetlak/q-ctrl) to your Scaffold setup.
+You are free to either manually interact with your backlog or add [Q-CTRL](https://github.com/ksetlak/q-ctrl) to your Scaffold setup. Q-CTRL is a desktop Kanban board for the backlog items in your project.
 
 ### 7.a. Manually managing backlog items
 
 Copy `backlog/_template.md` to `backlog/items/{PROJECT_KEY}-001.md`, using the key and the number width from `.copier-answers.yml`, for each item. See `backlog/README.md` for the full schema. Set `status: READY` on items you want agents to pick up.
+
+### 7.b. Using Q-CTRL
+
+Download the binary for your platform from the [Q-CTRL releases page](https://github.com/ksetlak/q-ctrl/releases), put it on your PATH as `qctrl`, and run `qctrl` from the root of your project. The Q-CTRL README has the exact file names and install steps.
 
 ## You're ready
 
