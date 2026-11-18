@@ -8,3 +8,6 @@ backlog/private/
 
 # Personal Scaffold settings (see scaffold.yaml)
 scaffold.local.yaml
+
+# Debug log written by Q-CTRL in the project root
+qctrl-debug.log
